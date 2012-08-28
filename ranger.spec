@@ -1,12 +1,12 @@
 Summary:	A simple, vim-like file manager
 Summary(hu.UTF-8):	Egyszerű, vim-szerű fájlkezelő
 Name:		ranger
-Version:	1.5.3
-Release:	0.1
+Version:	1.5.5
+Release:	1
 License:	GPL v3
 Group:		Applications/Shells
 Source0:	http://nongnu.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	ab90a2aa4d77cacbd47f45ed6b7c58f2
+# Source0-md5:	b7fd3d146f580f42b9758db09d18ea4c
 URL:		http://savannah.nongnu.org/projects/ranger/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
