@@ -1,13 +1,13 @@
 Summary:	A simple, vim-like file manager
 Summary(hu.UTF-8):	Egyszerű, vim-szerű fájlkezelő
 Name:		ranger
-Version:	1.7.1
+Version:	1.9.1
 Release:	1
 License:	GPL v3
 Group:		Applications/Shells
-Source0:	http://nongnu.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	ec64bc12d3edfd784b1d67023fdf21fc
-URL:		http://savannah.nongnu.org/projects/ranger/
+Source0:	https://ranger.github.io/%{name}-%{version}.tar.gz
+# Source0-md5:	5be5e890c9b5b356c63ed72efd82b3a3
+URL:		https://ranger.github.io/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,13 +20,13 @@ Egyszerű, vim-szerű fájlkezelő.
 %setup -q
 
 %build
-%{__make}
+%{__make} compile
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%py_install
+%py_postclean
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -39,13 +39,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGELOG HACKING.md README.md doc/colorschemes.txt doc/config doc/tools
+%doc AUTHORS CHANGELOG.md HACKING.md README.md doc/colorschemes.txt doc/config doc/tools
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/rifle
+%{_desktopdir}/ranger.desktop
 %if "%{py_ver}" > "2.4"
-%{py_sitescriptdir}/ranger-%{version}-py2.7.egg-info
+%{py_sitescriptdir}/ranger_fm-%{version}-py2.7.egg-info
 %endif
-%{py_sitescriptdir}/ranger
+%dir %{py_sitescriptdir}/ranger
+%{py_sitescriptdir}/ranger/api
+%{py_sitescriptdir}/ranger/colorschemes
+%{py_sitescriptdir}/ranger/config
+%{py_sitescriptdir}/ranger/container
+%{py_sitescriptdir}/ranger/core
+%dir %{py_sitescriptdir}/ranger/data
+%{py_sitescriptdir}/ranger/data/mime.types
+%attr(755,root,root) %{py_sitescriptdir}/ranger/data/scope.sh
+%{py_sitescriptdir}/ranger/ext
+%{py_sitescriptdir}/ranger/gui
+%{py_sitescriptdir}/ranger/*.py[co]
 %{_mandir}/man1/ranger.1*
 %{_mandir}/man1/rifle.1*
 %{_examplesdir}/%{name}-%{version}
