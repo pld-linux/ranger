@@ -1,12 +1,12 @@
 Summary:	A simple, vim-like file manager
 Summary(hu.UTF-8):	Egyszerű, vim-szerű fájlkezelő
 Name:		ranger
-Version:	1.9.1
+Version:	1.9.2
 Release:	1
 License:	GPL v3
 Group:		Applications/Shells
 Source0:	https://ranger.github.io/%{name}-%{version}.tar.gz
-# Source0-md5:	5be5e890c9b5b356c63ed72efd82b3a3
+# Source0-md5:	08970e4343ac0457a60befa1ec97f62b
 URL:		https://ranger.github.io/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,7 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGELOG.md HACKING.md README.md doc/colorschemes.txt doc/config doc/tools
+%doc AUTHORS CHANGELOG.md HACKING.md README.md doc/colorschemes.md doc/config doc/tools
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/rifle
 %{_desktopdir}/ranger.desktop
