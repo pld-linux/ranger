@@ -1,13 +1,18 @@
 Summary:	A simple, vim-like file manager
 Summary(hu.UTF-8):	Egyszerű, vim-szerű fájlkezelő
 Name:		ranger
-Version:	1.9.2
+Version:	1.9.3
 Release:	1
 License:	GPL v3
 Group:		Applications/Shells
 Source0:	https://ranger.github.io/%{name}-%{version}.tar.gz
-# Source0-md5:	08970e4343ac0457a60befa1ec97f62b
+# Source0-md5:	d491987cd9fb06bee100264cfea55d26
 URL:		https://ranger.github.io/
+BuildRequires:	python-modules
+BuildRequires:	python-setuptools
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -18,6 +23,8 @@ Egyszerű, vim-szerű fájlkezelő.
 
 %prep
 %setup -q
+
+%{__sed} -i -e '1s,/usr/bin/env bash,/bin/bash,' ranger/data/scope.sh
 
 %build
 %{__make} compile
