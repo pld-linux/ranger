@@ -2,7 +2,7 @@ Summary:	A simple, vim-like file manager
 Summary(hu.UTF-8):	Egyszerű, vim-szerű fájlkezelő
 Name:		ranger
 Version:	1.9.3
-Release:	5
+Release:	6
 License:	GPL v3
 Group:		Applications/Shells
 Source0:	https://ranger.github.io/%{name}-%{version}.tar.gz
